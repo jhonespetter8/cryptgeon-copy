@@ -10,7 +10,7 @@
 </script>
 
 <p>
-	<b>▶ {title}</b>
+	<b>{title}</b>
 	{@render children?.()}
 </p>
 
@@ -21,6 +21,6 @@
 	}
 
 	p > :global(span) {
-		padding-left: 1.25em;
+		padding-left: 0;
 	}
 </style>

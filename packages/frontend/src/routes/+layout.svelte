@@ -20,8 +20,8 @@
 </script>
 
 <svelte:head>
-	<title>{$status?.theme_page_title || 'cryptgeon'}</title>
-	<link rel="icon" href={$status?.theme_favicon || '/favicon.png'} />
+	<title>{$status?.theme_page_title || 'Secure Share'}</title>
+	<link rel="icon" href={$status?.theme_favicon || '/favicon.svg'} />
 </svelte:head>
 
 {#await waitLocale() then _}

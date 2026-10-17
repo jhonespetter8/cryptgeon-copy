@@ -1,11 +1,11 @@
-@import '@fontsource/fira-mono';
+
 
 * {
 	box-sizing: border-box;
 }
 
 :root {
-	font-family: 'Fira Mono', monospace;
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
 	--ui-bg-0: #111;
 	--ui-bg-0-85: #111111d9;

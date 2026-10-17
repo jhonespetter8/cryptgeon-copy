@@ -2,26 +2,65 @@ services:
   cache:
     image: valkey/valkey:9-alpine
     # This is required to stay in RAM only.
-    command: valkey-server --save "" --appendonly no
-    # Set a size limit. See link below on how to customise.
-    # https://valkey.io/topics/lru-cache/
-    # --maxmemory 1gb --maxmemory-policy allkeys-lru
+    command: valkey-server --save "" --appendonly no --maxmemory 256mb --maxmemory-policy allkeys-lru
+    restart: unless-stopped
     # This prevents the creation of an anonymous volume.
     tmpfs:
       - /data
+    networks:
+      - internal
 
   app:
-    image: cupcakearmy/cryptgeon:3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
     depends_on:
       - cache
     environment:
       # Size limit for a single note.
       SIZE_LIMIT: 4 MiB
-    ports:
-      - 80:8000
+      THEME_PAGE_TITLE: Secure Share
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://127.0.0.1:8000/healthz"]
       interval: 1m
       timeout: 3s
       retries: 2
       start_period: 5s
+    networks:
+      - internal
+      - proxy
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+
+  # ========================
+  # ROUTER PRINCIPAL
+  # ========================
+      - "traefik.http.routers.secret.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.secret.entrypoints=websecure"
+      - "traefik.http.routers.secret.tls=true"
+      - "traefik.http.routers.secret.tls.certresolver=${TRAEFIK_CERTRESOLVER}"
+
+  # SERVICE
+      - "traefik.http.services.secret.loadbalancer.server.port=8000"
+
+  # ========================
+  # MIDDLEWARES
+  # ========================
+
+  # Rate limit
+      - "traefik.http.middlewares.secret-ratelimit.ratelimit.average=30"
+      - "traefik.http.middlewares.secret-ratelimit.ratelimit.burst=60"
+
+  # Cloudflare
+      - "traefik.http.middlewares.cloudflare-only.ipallowlist.sourcerange=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22"
+
+  # Aplicação dos middlewares (ORDEM IMPORTA)
+      - "traefik.http.routers.secret.middlewares=cloudflare-only@docker,secret-ratelimit@docker"
+
+networks:
+  internal:
+  proxy:
+    external: true
