@@ -2,8 +2,11 @@ services:
   cache:
     image: valkey/valkey:9-alpine
     # This is required to stay in RAM only.
-    command: valkey-server --save "" --appendonly no --maxmemory 256mb --maxmemory-policy allkeys-lru
+    # maxmemory must stay below mem_limit, leaving headroom for Valkey itself.
+    command: valkey-server --save "" --appendonly no --maxmemory 64mb --maxmemory-policy allkeys-lru
     restart: unless-stopped
+    mem_limit: 96m
+    cpus: "0.25"
     # This prevents the creation of an anonymous volume.
     tmpfs:
       - /data
@@ -15,6 +18,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
+    mem_limit: 128m
+    cpus: "0.25"
     depends_on:
       - cache
     environment:
