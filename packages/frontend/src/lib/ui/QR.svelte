@@ -31,7 +31,8 @@
 	div {
 		padding: 0.25rem;
 		width: fit-content;
-		border: 2px solid var(--ui-bg-1);
+		border: 1px solid var(--ui-bg-1);
+		border-radius: var(--ui-radius-sm);
 		background-color: var(--ui-bg-0);
 		margin-top: 0.125rem;
 		overflow: hidden;

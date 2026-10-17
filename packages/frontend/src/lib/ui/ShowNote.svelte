@@ -101,9 +101,11 @@ async function downloadFile(file: FileDTO) {
 		width: 100%;
 		margin: 0;
 		padding: 0;
-		border: 2px solid var(--ui-bg-1);
+		border: 1px solid var(--ui-bg-1);
+		border-radius: var(--ui-radius-sm);
 		outline: none;
-		padding: 0.5rem;
+		padding: 0.75rem 1rem;
+		background: var(--ui-bg-0);
 		white-space: pre;
 		overflow: auto;
 		margin-bottom: 0.5rem;
@@ -147,7 +149,7 @@ async function downloadFile(file: FileDTO) {
 		max-width: 100%;
 		max-height: 60vh;
 		margin-bottom: 0.5rem;
-		border-radius: 0.25rem;
-		border: 2px solid var(--ui-bg-1);
+		border: 1px solid var(--ui-bg-1);
+		border-radius: var(--ui-radius-sm);
 	}
 </style>

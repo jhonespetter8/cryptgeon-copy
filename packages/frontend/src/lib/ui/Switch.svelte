@@ -10,15 +10,19 @@
 </script>
 
 <label {...rest}>
-	<small>{label}</small>
 	<input type="checkbox" bind:checked={value} />
 	<span class:color class="slider"></span>
+	<small>{label}</small>
 </label>
 
 <style>
 	label {
-		position: relative;
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		height: 2.5rem;
+		cursor: pointer;
+		user-select: none;
 	}
 
 	label input {
@@ -26,37 +30,37 @@
 	}
 
 	small {
-		display: block;
 		width: max-content;
 	}
 
 	.slider {
-		display: block;
-		width: 4rem;
-		height: 2.5rem;
 		position: relative;
-		cursor: pointer;
-		border: 2px solid var(--ui-bg-1);
-		background-color: var(--ui-bg-0);
+		flex-shrink: 0;
+		width: 2.25rem;
+		height: 1.25rem;
+		border-radius: 999px;
+		background-color: var(--ui-bg-2);
+		transition: var(--ui-anim);
 	}
 
 	.slider:before {
 		position: absolute;
 		content: '';
-		height: 2rem;
-		width: 1.25rem;
+		width: 1rem;
+		height: 1rem;
 		left: 0.125rem;
-		bottom: 0.125rem;
-		background-color: var(--ui-bg-1);
-		-webkit-transition: 0.4s;
+		top: 0.125rem;
+		border-radius: 50%;
+		background-color: #fff;
+		box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
 		transition: var(--ui-anim);
 	}
 
-	input:checked + .slider.color:before {
+	input:checked + .slider.color {
 		background-color: var(--ui-clr-primary);
 	}
 
 	input:checked + .slider:before {
-		transform: translateX(calc(2.25rem - 1px));
+		transform: translateX(1rem);
 	}
 </style>

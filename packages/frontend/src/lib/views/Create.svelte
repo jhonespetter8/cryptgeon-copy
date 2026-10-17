@@ -169,7 +169,7 @@
 {#if result}
 	<Result {result} />
 {:else}
-	<p>
+	<p class="intro">
 		{@html $status?.theme_text || $t('home.intro')}
 	</p>
 	<form onsubmit={submit} onpaste={handlePaste}>
@@ -212,15 +212,11 @@
 					/>
 				{/if}
 				<div class="grow"></div>
-				<div class="tr">
-					<small>{$t('common.max')}: <MaxSize /> </small>
-					<br />
-					<Button type="submit">{$t('common.create')}</Button>
-				</div>
+				<small class="max">{$t('common.max')}: <MaxSize /></small>
+				<Button type="submit">{$t('common.create')}</Button>
 			</div>
 
-			<p>
-				<br />
+			<p class="hint">
 				{#if loading}
 					{loading} <Loader />
 				{:else}
@@ -239,14 +235,29 @@
 {/if}
 
 <style>
-	.bottom {
-		display: flex;
-		align-items: flex-end;
-		margin-top: 0.5rem;
+	.intro {
+		color: var(--ui-text-1);
+		margin-bottom: 1.25rem;
 	}
 
-	.bottom :global(.file) {
-		margin-right: 0.5rem;
+	.bottom {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 1rem;
+		margin-top: 0.75rem;
+	}
+
+	.hint {
+		margin-top: 1rem;
+		font-size: 0.875rem;
+		color: var(--ui-text-1);
+	}
+
+	@media screen and (max-width: 30rem) {
+		.max {
+			display: none;
+		}
 	}
 
 	.grow {
@@ -255,7 +266,7 @@
 
 	.paste-indicator {
 		position: relative;
-		min-height: 200px;
+		min-height: 12rem;
 	}
 
 	.pasting-overlay {
@@ -265,6 +276,7 @@
 		right: 0;
 		bottom: 0;
 		background: rgba(0, 0, 0, 0.5);
+		border-radius: var(--ui-radius-sm);
 		display: flex;
 		flex-direction: column;
 		align-items: center;

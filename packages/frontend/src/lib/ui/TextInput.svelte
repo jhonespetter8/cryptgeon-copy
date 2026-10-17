@@ -79,19 +79,27 @@
 
 	label > small {
 		display: block;
+		margin-bottom: 0.375rem;
+		font-weight: 500;
 	}
 
 	input {
 		width: 100%;
 		margin: 0;
-		border: 2px solid var(--ui-bg-1);
+		border: 1px solid var(--ui-bg-1);
+		background: var(--ui-bg-0);
 		outline: none;
-		padding: 0.5rem;
+		padding: 0.5rem 0.75rem;
 		height: 2.5rem;
 	}
-	input:hover,
+
+	input:hover {
+		border-color: var(--ui-bg-2);
+	}
+
 	input:focus {
 		border-color: var(--ui-clr-primary);
+		box-shadow: var(--ui-ring);
 	}
 
 	input:not(.valid) {
@@ -99,23 +107,24 @@
 	}
 
 	.icons {
-		border: 1px red;
 		position: absolute;
-		right: 0.3rem;
-		bottom: 0.3rem;
+		right: 0.35rem;
+		bottom: 0.35rem;
 		display: flex;
-		color: var(--ui-clr-primary);
+		gap: 0.25rem;
+		color: var(--ui-text-1);
 	}
+
 	.icons > :global(.icon) {
-		width: 1.5rem;
-		height: 1.5rem;
-		background-color: var(--ui-bg-1);
-		border: 2px solid var(--ui-bg-2);
-		padding: 1px;
+		width: 1.25rem;
+		height: 1.25rem;
+		padding: 0.3rem;
+		border-radius: 6px;
 		cursor: pointer;
-		margin-left: 0.25rem;
 	}
+
 	.icons > :global(.icon:hover) {
-		border-color: var(--ui-clr-primary);
+		background-color: var(--ui-bg-1);
+		color: var(--ui-clr-primary);
 	}
 </style>

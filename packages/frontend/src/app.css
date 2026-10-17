@@ -1,52 +1,58 @@
-
-
 * {
 	box-sizing: border-box;
 }
 
 :root {
 	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	line-height: 1.5;
 
-	--ui-bg-0: #111;
-	--ui-bg-0-85: #111111d9;
-	--ui-bg-1: #333;
-	--ui-bg-2: #444;
-	--ui-text-0: #fefefe;
-	--ui-text-1: #eee;
-	--ui-clr-primary: hsl(186, 65%, 55%);
-	--ui-clr-primary-alt: hsl(186, 85%, 35%);
-	--ui-clr-error: hsl(357, 77%, 51%);
-	--ui-clr-error-alt: hsl(357, 87%, 41%);
+	--ui-bg-0: #0f1115;
+	--ui-bg-0-85: #0f1115d9;
+	--ui-surface: #171a21;
+	--ui-bg-1: #262a33;
+	--ui-bg-2: #353a45;
+	--ui-text-0: #e8eaed;
+	--ui-text-1: #9aa1ac;
+	--ui-clr-primary: #2dd4bf;
+	--ui-clr-primary-alt: #14b8a6;
+	--ui-clr-on-primary: #04201c;
+	--ui-clr-error: hsl(357, 77%, 58%);
+	--ui-clr-error-alt: hsl(357, 87%, 45%);
+	--ui-ring: 0 0 0 3px rgb(45 212 191 / 0.25);
+	--ui-radius: 12px;
+	--ui-radius-sm: 8px;
 
 	--ui-anim: all 150ms ease;
 }
 
 @media (prefers-color-scheme: light) {
-	:root {
-		--ui-bg-0: #fefefe;
-		--ui-bg-0-85: #fefefed9;
-		--ui-bg-1: #eee;
-		--ui-bg-2: #e2e2e2;
-		--ui-text-0: #111;
-		--ui-text-1: #333;
+	:root:not([theme='dark']) {
+		--ui-bg-0: #f6f7f9;
+		--ui-bg-0-85: #f6f7f9d9;
+		--ui-surface: #ffffff;
+		--ui-bg-1: #e3e6eb;
+		--ui-bg-2: #cfd4db;
+		--ui-text-0: #14171c;
+		--ui-text-1: #5f6773;
+		--ui-clr-primary: #0d9488;
+		--ui-clr-primary-alt: #0f766e;
+		--ui-clr-on-primary: #ffffff;
+		--ui-ring: 0 0 0 3px rgb(13 148 136 / 0.2);
 	}
 }
 
-:root[theme='dark'] {
-	--ui-bg-0: #111 !important;
-	--ui-bg-0-85: #111111d9 !important;
-	--ui-bg-1: #333 !important;
-	--ui-bg-2: #444 !important;
-	--ui-text-0: #fefefe !important;
-	--ui-text-1: #eee !important;
-}
 :root[theme='light'] {
-	--ui-bg-0: #fefefe !important;
-	--ui-bg-0-85: #fefefed9 !important;
-	--ui-bg-1: #eee !important;
-	--ui-bg-2: #e2e2e2 !important;
-	--ui-text-0: #111 !important;
-	--ui-text-1: #333 !important;
+	--ui-bg-0: #f6f7f9;
+	--ui-bg-0-85: #f6f7f9d9;
+	--ui-surface: #ffffff;
+	--ui-bg-1: #e3e6eb;
+	--ui-bg-2: #cfd4db;
+	--ui-text-0: #14171c;
+	--ui-text-1: #5f6773;
+	--ui-clr-primary: #0d9488;
+	--ui-clr-primary-alt: #0f766e;
+	--ui-clr-on-primary: #ffffff;
+	--ui-ring: 0 0 0 3px rgb(13 148 136 / 0.2);
 }
 
 .error-text {
@@ -64,7 +70,7 @@ a {
 	color: inherit;
 	text-decoration: inherit;
 	box-sizing: content-box;
-	border-bottom: 2px solid var(--ui-bg-2);
+	border-bottom: 1px solid var(--ui-bg-2);
 	cursor: pointer;
 }
 
@@ -81,7 +87,7 @@ textarea,
 button {
 	appearance: none;
 	-webkit-appearance: none;
-	border-radius: 0;
+	border-radius: var(--ui-radius-sm);
 	transition: var(--ui-anim);
 	font-family: inherit;
 	font-size: inherit;
@@ -102,25 +108,46 @@ fieldset {
 	border: none;
 }
 
+small {
+	color: var(--ui-text-1);
+}
+
 .box {
 	width: 100%;
-	min-height: min(calc(100vh - 30rem), 20rem);
+	min-height: 12rem;
 	margin: 0;
-	border: 2px solid var(--ui-bg-1);
+	border: 1px solid var(--ui-bg-1);
+	background: var(--ui-bg-0);
 	resize: vertical;
 	outline: none;
-	padding: 0.5rem;
+	padding: 0.75rem 1rem;
+	line-height: 1.5;
+}
+
+.box:hover {
+	border-color: var(--ui-bg-2);
+}
+
+.box:focus,
+.box:focus-within {
+	border-color: var(--ui-clr-primary);
+	box-shadow: var(--ui-ring);
+}
+
+.card {
+	background: var(--ui-surface);
+	border: 1px solid var(--ui-bg-1);
+	border-radius: var(--ui-radius);
+	padding: 1.25rem;
+	box-shadow:
+		0 1px 2px rgb(0 0 0 / 0.04),
+		0 8px 24px rgb(0 0 0 / 0.06);
 }
 
 @media screen and (max-width: 30rem) {
-	.box {
-		min-height: calc(100vh - 25rem);
+	.card {
+		padding: 1rem;
 	}
-}
-
-.box:hover,
-.box:focus {
-	border-color: var(--ui-clr-primary);
 }
 
 .tr {
@@ -129,8 +156,8 @@ fieldset {
 
 hr {
 	border: none;
-	border-bottom: 2px solid var(--ui-bg-1);
-	margin: 1rem 0;
+	border-bottom: 1px solid var(--ui-bg-1);
+	margin: 1.25rem 0;
 }
 
 p {

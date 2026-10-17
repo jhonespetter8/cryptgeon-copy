@@ -9,8 +9,20 @@
 </script>
 
 <label>
-	<small>
+	<small class="label">
 		{label}
 	</small>
 	<textarea class="box" {...rest} bind:value></textarea>
 </label>
+
+<style>
+	label {
+		display: block;
+	}
+
+	.label {
+		display: block;
+		margin-bottom: 0.375rem;
+		font-weight: 500;
+	}
+</style>

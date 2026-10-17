@@ -8,21 +8,39 @@
 	let { children, ...rest }: HTMLButtonAttributes & Props = $props()
 </script>
 
-<button {...rest}>{@render children?.()}</button>
+<button {...rest} class:primary={rest.type === 'submit'}>{@render children?.()}</button>
 
 <style>
 	button {
-		width: auto;
-		display: inline-block;
-		padding: 0.25rem 2.5rem;
-		border: 2px solid var(--ui-bg-2);
-		background: var(--ui-bg-1);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 1.25rem;
+		height: 2.5rem;
+		border: 1px solid var(--ui-bg-2);
+		background: var(--ui-surface);
+		font-weight: 500;
 		outline: none;
 		cursor: pointer;
-		height: 2.5rem;
 	}
 
 	button:hover {
+		border-color: var(--ui-text-1);
+	}
+
+	button:focus-visible {
+		box-shadow: var(--ui-ring);
+	}
+
+	.primary {
+		background: var(--ui-clr-primary);
 		border-color: var(--ui-clr-primary);
+		color: var(--ui-clr-on-primary);
+		padding: 0 1.75rem;
+	}
+
+	.primary:hover {
+		background: var(--ui-clr-primary-alt);
+		border-color: var(--ui-clr-primary-alt);
 	}
 </style>

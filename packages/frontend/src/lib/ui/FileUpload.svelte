@@ -66,6 +66,16 @@
 </label>
 
 <style>
+	label {
+		display: block;
+	}
+
+	label > small {
+		display: block;
+		margin-bottom: 0.375rem;
+		font-weight: 500;
+	}
+
 	input {
 		display: none;
 	}
@@ -75,7 +85,19 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		text-align: center;
+		border-style: dashed;
+		border-width: 2px;
 		cursor: pointer;
+	}
+
+	.box:hover {
+		border-color: var(--ui-clr-primary);
+	}
+
+	.file {
+		color: var(--ui-text-1);
+		word-break: break-all;
 	}
 
 	.spacer {
