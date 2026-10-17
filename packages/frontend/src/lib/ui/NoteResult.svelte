@@ -29,6 +29,8 @@
 	}
 </script>
 
+<h2 class="ready">Your link is ready</h2>
+
 <TextInput
 	type="text"
 	readonly
@@ -51,6 +53,11 @@
 <Button onclick={reset}>{$t('home.new_note')}</Button>
 
 <style>
+	.ready {
+		margin: 0 0 1.25rem;
+		font-size: 1.5rem;
+	}
+
 	div {
 		width: min(12rem, 100%);
 		margin-top: 1rem;

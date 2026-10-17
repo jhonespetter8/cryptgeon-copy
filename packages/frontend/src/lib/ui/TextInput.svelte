@@ -127,4 +127,8 @@
 		background-color: var(--ui-bg-1);
 		color: var(--ui-clr-primary);
 	}
+
+	small::first-letter {
+		text-transform: uppercase;
+	}
 </style>

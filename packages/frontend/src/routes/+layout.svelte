@@ -27,9 +27,7 @@
 {#await waitLocale() then _}
 	<main>
 		<Header />
-		<div class="card">
-			{@render children?.()}
-		</div>
+		{@render children?.()}
 	</main>
 
 	<SvelteToast />
@@ -39,10 +37,9 @@
 
 <style>
 	main {
-		padding: 1rem;
-		padding-bottom: 4rem;
 		width: 100%;
 		max-width: 40rem;
 		margin: 0 auto;
+		padding: 0 1rem;
 	}
 </style>

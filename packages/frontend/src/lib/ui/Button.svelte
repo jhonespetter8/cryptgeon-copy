@@ -13,13 +13,14 @@
 <style>
 	button {
 		display: inline-flex;
+		text-transform: capitalize;
 		align-items: center;
 		justify-content: center;
 		padding: 0 1.25rem;
+		font-weight: 600;
 		height: 2.5rem;
 		border: 1px solid var(--ui-bg-2);
 		background: var(--ui-surface);
-		font-weight: 500;
 		outline: none;
 		cursor: pointer;
 	}

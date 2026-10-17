@@ -44,16 +44,25 @@
 
 <style>
 	button :global(.icon) {
-		height: 1rem;
-		width: 1rem;
-		margin-right: 0.5rem;
+		height: 0.9rem;
+		width: 0.9rem;
 	}
 
 	button {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
+		display: inline-flex;
 		align-items: center;
+		gap: 0.4rem;
+		padding: 0.35rem 0.75rem;
+		border: 1px solid var(--ui-bg-1);
+		border-radius: 999px;
+		font-size: 0.8125rem;
+		color: var(--ui-text-1);
+		text-transform: capitalize;
 		cursor: pointer;
+	}
+
+	button:hover {
+		color: var(--ui-text-0);
+		border-color: var(--ui-bg-2);
 	}
 </style>

@@ -111,6 +111,7 @@
 	}
 </script>
 
+<div class="sheet">
 {#if !loading}
 	{#if !exists}
 		<p class="error-text">{$t('show.errors.not_found')}</p>
@@ -119,7 +120,8 @@
 	{:else}
 		<form onsubmit={show}>
 			<fieldset>
-				<p>{$t('show.explanation')}</p>
+				<h2>Someone sent you a secret</h2>
+				<p class="explain">{$t('show.explanation')}</p>
 				{#if hasExtra}
 					<TextInput
 						data-testid="show-note-password"
@@ -144,6 +146,7 @@
 {#if loading}
 	<p class="loader">{loading} <Loader /></p>
 {/if}
+</div>
 
 <style>
 	.loader {
@@ -154,5 +157,22 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.5rem;
+	}
+
+	.explain {
+		color: var(--ui-text-1);
+	}
+
+	.explain::first-letter {
+		text-transform: uppercase;
+	}
+
+	fieldset :global(button) {
+		align-self: flex-start;
 	}
 </style>

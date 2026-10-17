@@ -37,9 +37,9 @@
 </script>
 
 <label>
-	<small>
-		{label}
-	</small>
+	{#if label}
+		<small>{label}</small>
+	{/if}
 	<input {...rest} type="file" onchange={onInput} multiple />
 	<div class="box">
 		{#if files.length}
@@ -55,6 +55,7 @@
 			</div>
 		{:else}
 			<div>
+				<svg class="up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14" /></svg>
 				<b>{$t('file_upload.no_files_selected')}</b>
 				<br />
 				<small>
@@ -100,7 +101,23 @@
 		word-break: break-all;
 	}
 
+	.up {
+		display: block;
+		width: 1.75rem;
+		height: 1.75rem;
+		margin: 0 auto 0.5rem;
+		color: var(--ui-clr-primary);
+	}
+
+	b::first-letter {
+		text-transform: uppercase;
+	}
+
 	.spacer {
 		margin-top: 1rem;
+	}
+
+	small::first-letter {
+		text-transform: uppercase;
 	}
 </style>

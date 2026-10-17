@@ -9,9 +9,9 @@
 </script>
 
 <label>
-	<small class="label">
-		{label}
-	</small>
+	{#if label}
+		<small class="label">{label}</small>
+	{/if}
 	<textarea class="box" {...rest} bind:value></textarea>
 </label>
 
@@ -24,5 +24,9 @@
 		display: block;
 		margin-bottom: 0.375rem;
 		font-weight: 500;
+	}
+
+	small::first-letter {
+		text-transform: uppercase;
 	}
 </style>

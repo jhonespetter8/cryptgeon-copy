@@ -7,7 +7,7 @@
 	<title>About</title>
 </svelte:head>
 
-<section class="content">
+<section class="content sheet">
 	<h1>About</h1>
 
 	<p>Share passwords, notes and files securely through a one-time link.</p>

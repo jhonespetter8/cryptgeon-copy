@@ -61,15 +61,15 @@
 	.pasted-files-preview {
 		margin-top: 1rem;
 		padding: 1rem;
-		border: 1px dashed #ccc;
-		border-radius: 4px;
-		background-color: #fafafa;
+		border: 1px dashed var(--ui-bg-2);
+		border-radius: var(--ui-radius-sm);
+		background-color: var(--ui-field);
 	}
 
 	.pasted-files-preview h4 {
 		margin-top: 0;
 		margin-bottom: 0.5rem;
-		color: #333;
+		color: var(--ui-text-0);
 	}
 
 	.files-grid {
@@ -87,7 +87,7 @@
 	.preview-img {
 		max-width: 150px;
 		max-height: 150px;
-		border-radius: 4px;
+		border-radius: var(--ui-radius-sm);
 		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 	}
 
@@ -97,25 +97,25 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border: 1px solid #e0e0e0;
-		border-radius: 4px;
-		background: #f5f5f5;
+		border: 1px solid var(--ui-bg-1);
+		border-radius: var(--ui-radius-sm);
+		background: var(--ui-field);
 		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 	}
 
 	.file-extension {
 		font-size: 1.2rem;
 		font-weight: bold;
-		color: #666;
+		color: var(--ui-text-1);
 		padding: 0.25rem 0.5rem;
-		border: 1px solid #ccc;
-		border-radius: 4px;
+		border: 1px solid var(--ui-bg-2);
+		border-radius: var(--ui-radius-sm);
 		background: white;
 	}
 
 	.file-name {
 		font-size: 0.75rem;
-		color: #666;
+		color: var(--ui-text-1);
 		margin-top: 0.25rem;
 		overflow: hidden;
 		text-overflow: ellipsis;

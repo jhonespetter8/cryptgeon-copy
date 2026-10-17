@@ -1,10 +1,9 @@
 <script lang="ts">
-	import ThemeToggle from '$lib/ui/ThemeToggle.svelte'
 	import { status } from '$lib/stores/status'
 </script>
 
 <footer>
-	<ThemeToggle />
+	<small>Encrypted in your browser. The server never sees the key.</small>
 	<nav>
 		{#if $status?.theme_home_link !== false}
 			<a href="/">Home</a>
@@ -21,32 +20,28 @@
 <style>
 	footer {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0.75rem 1rem;
-		position: fixed;
-		bottom: 0;
-		right: 0;
+		gap: 0.5rem 1.5rem;
 		width: 100%;
-		font-size: 0.875rem;
-		color: var(--ui-text-1);
-		background-color: var(--ui-bg-0-85);
-		backdrop-filter: blur(8px);
-		border-top: 1px solid var(--ui-bg-1);
-	}
-
-	a {
-		margin: 0 0.5rem;
-		border: none;
-	}
-
-	a:hover {
-		color: var(--ui-text-0);
+		max-width: 40rem;
+		margin: 0 auto;
+		padding: 2rem 1rem 2.5rem;
 	}
 
 	nav {
 		display: flex;
-		justify-content: flex-end;
-		align-items: center;
+		gap: 1.25rem;
+		font-size: 0.8125rem;
+		color: var(--ui-text-1);
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--ui-text-0);
 	}
 </style>

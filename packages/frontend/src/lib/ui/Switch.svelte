@@ -63,4 +63,8 @@
 	input:checked + .slider:before {
 		transform: translateX(1rem);
 	}
+
+	small::first-letter {
+		text-transform: uppercase;
+	}
 </style>
